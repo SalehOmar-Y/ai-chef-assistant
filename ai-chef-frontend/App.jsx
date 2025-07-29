@@ -7,8 +7,20 @@ function App() {
   const [imageUrl, setImageUrl] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const speak = (text) => {
+  if ('speechSynthesis' in window) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'ar-SA'; // Arabic Saudi dialect
+    window.speechSynthesis.speak(utterance);
+  } else {
+    console.warn('Speech synthesis not supported in this browser.');
+  }
+};
+  // Function to ask the chef
+
   const askChef = async () => {
-    setLoading(true);\setReply('');
+    setLoading(true);
+    setReply('');
     setImageUrl('');
 
     try {
@@ -27,7 +39,7 @@ function App() {
     <div style={{ maxWidth: 600, margin: 'auto', padding: 20, fontFamily: 'Arial' }}>
       <h1>👨‍🍳 مساعد الشيف الذكي</h1>
       <p>اسألني عن كيفية تحضير أي طبق عربي وسأجيبك خطوة بخطوة!</p>
-      
+
       <textarea
         rows={3}
         style={{ width: '100%', padding: 10 }}
@@ -45,8 +57,14 @@ function App() {
           <p>{reply}</p>
         </div>
       )}
+
+      {imageUrl && (
+        <div style={{ marginTop: 20 }}>
+          <strong>صورة الطبق:</strong>
+          <img src={imageUrl} alt="صورة الطبق" style={{ maxWidth: '100%', borderRadius: 8 }} />
+        </div>
+      )}
     </div>
   );
 }
-
 export default App;

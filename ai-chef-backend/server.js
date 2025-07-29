@@ -27,10 +27,11 @@ app.post('/ask', async (req, res) => {
   const { question } = req.body;
 
     try {
-    const dishName = question.replace('كيف أعمل', '')
-                             .replace('كيف أطبخ', '')
-                             .replace('؟', '')
-                             .trim();
+    const dishName = question
+      .replace('كيف أعمل', '')
+      .replace('كيف أطبخ', '')
+      .replace('؟', '')
+      .trim();
 
     const prompt = `
     أنت شيف عربي محترف. عندما يسألك المستخدم "كيف أطبخ ${dishName}؟"، تجاوب بالتفصيل، خطوة بخطوة، بالعربية، وبطريقة سهلة ومبسطة للمبتدئين.
@@ -48,7 +49,7 @@ app.post('/ask', async (req, res) => {
     const reply = completion.data.choices[0].message.content;
     const imageUrl = await generateImage(dishName);
 
-    res.json({ reply });
+    res.json({ reply, imageUrl });
   } catch (error) {
     console.error(error.response?.data || error.message);
     res.status(500).json({ error: 'حدث خطأ أثناء التواصل مع GPT' });
