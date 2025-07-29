@@ -7,18 +7,34 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// Initialize OpenAI API
 const configuration = new Configuration({
   apiKey: 'YOUR_OPENAI_API_KEY',
 });
 const openai = new OpenAIApi(configuration);
 
+// Function to generate an image of the dish
+const generateImage = async (dishName) => {
+  const imageResponse = await openai.createImage({
+    prompt: `A realistic photo of traditional Arabic dish called ${dishName}, served on a plate`,
+    n: 1,
+    size: '512x512',
+  });
+  return imageResponse.data.data[0].url;
+};
+
 app.post('/ask', async (req, res) => {
   const { question } = req.body;
 
-  try {
-    const prompt = `
-    أنت شيف عربي محترف. عندما يسألك المستخدم "كيف أطبخ معصوب؟" أو أي طبق آخر، تجاوب بالتفصيل، خطوة بخطوة، بالعربية، وبطريقة سهلة ومبسطة للمبتدئين.
+    try {
+    const dishName = question.replace('كيف أعمل', '')
+                             .replace('كيف أطبخ', '')
+                             .replace('؟', '')
+                             .trim();
 
+    const prompt = `
+    أنت شيف عربي محترف. عندما يسألك المستخدم "كيف أطبخ ${dishName}؟"، تجاوب بالتفصيل، خطوة بخطوة، بالعربية، وبطريقة سهلة ومبسطة للمبتدئين.
+    
     السؤال: ${question}
     الجواب:
     `;
@@ -30,6 +46,8 @@ app.post('/ask', async (req, res) => {
     });
 
     const reply = completion.data.choices[0].message.content;
+    const imageUrl = await generateImage(dishName);
+
     res.json({ reply });
   } catch (error) {
     console.error(error.response?.data || error.message);

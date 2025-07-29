@@ -4,22 +4,30 @@ import axios from 'axios';
 function App() {
   const [question, setQuestion] = useState('');
   const [reply, setReply] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [loading, setLoading] = useState(false);
 
   const askChef = async () => {
-    setLoading(true);
+    setLoading(true);\setReply('');
+    setImageUrl('');
+
     try {
       const response = await axios.post('http://localhost:5000/ask', { question });
       setReply(response.data.reply);
+      setImageUrl(response.data.imageUrl);
+      speak(response.data.reply);
     } catch (error) {
       setReply('حدث خطأ، حاول مرة ثانية.');
     }
+
     setLoading(false);
   };
 
   return (
     <div style={{ maxWidth: 600, margin: 'auto', padding: 20, fontFamily: 'Arial' }}>
       <h1>👨‍🍳 مساعد الشيف الذكي</h1>
+      <p>اسألني عن كيفية تحضير أي طبق عربي وسأجيبك خطوة بخطوة!</p>
+      
       <textarea
         rows={3}
         style={{ width: '100%', padding: 10 }}
