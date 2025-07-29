@@ -26,7 +26,7 @@ function App() {
     setImageUrl('');
 
     try {
-      const response = await axios.post('http://localhost:5000/ask', { question });
+      const response = await axios.post('/api/ask', { question });
       setReply(response.data.reply);
       setImageUrl(response.data.imageUrl);
       speak(response.data.reply);
