@@ -41,7 +41,7 @@ function App() {
     <div className="app-container">
       <div className="card">
         <h1 className="title">👨‍🍳 مساعد الشيف الذكي</h1>
-        <p className="subtitle">اسألني عن كيفية تحضير أي طبق عربي وسأجيبك خطوة بخطوة!</p>
+        <p className="subtitle">اسألني عن كيفية تحضير أي طبق وسأجيبك خطوة بخطوة!</p>
 
         <textarea
           className="input-textarea"

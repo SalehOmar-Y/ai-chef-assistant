@@ -1,131 +1,96 @@
-/* App.css */
-
-@import url('https://fonts.googleapis.com/css2?family=Amiri&family=Cairo&display=swap');
-
-:root {
-  --primary-color: #b24a14; /* deep warm brown */
-  --secondary-color: #f5e6d3; /* soft cream */
-  --accent-color: #d98c4a; /* warm gold */
-  --text-color: #3b2f2f; /* dark chocolate */
-  --background-color: #fff8f0; /* light cream */
-  --border-radius: 12px;
-  --box-shadow: 0 8px 20px rgba(178, 74, 20, 0.15);
-}
-
-* {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
-  font-family: 'Cairo', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  direction: rtl; /* Arabic right-to-left */
+  font-family: 'Tajawal', sans-serif;
+  background-color: #1a1a1a;
+  color: #fff;
+  direction: rtl;
 }
 
 .app-container {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-image: url('/images/hijazi-kitchen.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .card {
-  background-color: var(--secondary-color);
-  padding: 30px 40px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  max-width: 600px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 700px;
   width: 100%;
-  text-align: center;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .title {
-  font-family: 'Amiri', serif;
-  font-size: 2.8rem;
-  color: var(--primary-color);
-  margin-bottom: 10px;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #facc15; /* goldish */
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 5px #000;
 }
 
 .subtitle {
   font-size: 1.2rem;
-  margin-bottom: 25px;
-  color: var(--text-color);
-  opacity: 0.8;
+  color: #e5e7eb;
+  margin-bottom: 2rem;
+  text-align: center;
+  line-height: 1.8;
 }
 
 .input-textarea {
   width: 100%;
-  padding: 15px 20px;
   font-size: 1.1rem;
-  border-radius: var(--border-radius);
-  border: 2px solid var(--primary-color);
-  resize: vertical;
-  font-family: 'Cairo', sans-serif;
-  transition: border-color 0.3s ease;
-  direction: rtl;
-  min-height: 90px;
-}
-
-.input-textarea:focus {
-  border-color: var(--accent-color);
-  outline: none;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  background: #f9f9f9;
+  color: #111;
+  resize: none;
 }
 
 .submit-button {
-  margin-top: 20px;
-  background-color: var(--primary-color);
+  background-color: #facc15;
+  color: #111;
+  font-size: 1.1rem;
+  padding: 0.75rem 1.5rem;
   border: none;
-  color: white;
-  font-size: 1.25rem;
-  padding: 12px 35px;
-  border-radius: var(--border-radius);
+  border-radius: 0.75rem;
   cursor: pointer;
+  width: 100%;
   transition: background-color 0.3s ease;
-  font-family: 'Cairo', sans-serif;
-  font-weight: 600;
 }
 
-.submit-button:disabled {
-  background-color: #c28a66;
-  cursor: not-allowed;
-}
-
-.submit-button:hover:not(:disabled) {
-  background-color: var(--accent-color);
+.submit-button:hover {
+  background-color: #eab308;
 }
 
 .response-box {
-  margin-top: 30px;
-  background-color: #fff;
-  padding: 20px 25px;
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 15px rgba(178, 74, 20, 0.12);
-  text-align: right;
-  font-size: 1.15rem;
-  line-height: 1.6;
-  white-space: pre-line; /* preserve new lines */
-}
-
-.response-title {
-  margin-top: 0;
-  margin-bottom: 15px;
-  color: var(--primary-color);
-  font-weight: 700;
+  background: #222;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  white-space: pre-line;
 }
 
 .image-box {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
+  margin-top: 1.5rem;
+  text-align: center;
 }
 
 .dish-image {
   max-width: 100%;
-  height: auto;
-  border-radius: var(--border-radius);
-  box-shadow: 0 6px 18px rgba(217, 140, 74, 0.3);
+  border-radius: 0.75rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
 }
