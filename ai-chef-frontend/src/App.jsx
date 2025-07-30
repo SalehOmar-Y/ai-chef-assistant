@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="app-container">
       <div className="card">
-        <h1 className="title">👨‍🍳 مساعد الشيف الذكي</h1>
+        <h1 className="title">👨‍🍳 شيفك على كيفك</h1>
         <p className="subtitle">اسألني عن كيفية تحضير أي طبق وسأجيبك خطوة بخطوة!</p>
 
         <textarea
